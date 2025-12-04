@@ -3,37 +3,32 @@
 <head>
   <title>Conference Paper: Aerodynamics of a Helicopter</title>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <style>
-    body { font-family: Calibri, sans-serif; line-height: 1.6; margin: 20px; }
-    h1, h2, h3 { margin-top: 20px; }
-    pre { white-space: pre-wrap; font-family: Calibri, sans-serif; }
-    #content-section { max-width: 900px; }
-  </style>
 </head>
 <body>
-    <h2>Abstract</h2>
-    <p>Helicopters are unique aircraft that rely on rotary blades to generate lift, enabling vertical take‑off, hovering, and multidirectional flight. This paper explores the fundamental aerodynamics of helicopter flight by examining the four main forces acting on the aircraft: lift, weight, thrust, and drag. Lift is explained through Bernoulli’s principle, highlighting how pressure differences across rotor blades allow helicopters to rise and hover. Weight is addressed in terms of gravity and the importance of lightweight materials such as aluminium alloys and composites to improve efficiency. Thrust is discussed as the angled component of lift that enables forward, backward, and lateral movement, while drag is analysed in its parasitic and induced forms, with engineering solutions to reduce resistance. Real‑world applications, including emergency medical evacuations and search‑and‑rescue missions, demonstrate the versatility and importance of helicopters in critical situations. The discussion concludes that balancing these aerodynamic forces through design and material innovation ensures helicopters remain efficient, stable, and indispensable in modern aviation.</p>
-  <div id="content-section">
-    <img src="WebBanner2023.png" alt="banner" width="900" height="300">
+<div id="content-section">
+  <img src="WebBanner2023.png" alt="banner" width="900" height="300">
 
-    <h1><b>ENG0018 Computer Laboratory 2025/26</b></h1>
-    <h2>Student URN: 6929499</h2>
-    <hr>
+  <h1><b>ENG0018 Computer Laboratory 2025/26</b></h1>
+  <h2>Student URN: 6929499</h2>
+  <hr>
 
-    <h2><b>Conference paper: Aerodynamics of a Helicopter</b></h2>
-    <hr>
+  <h2><b>Conference paper: Aerodynamics of a Helicopter</b></h2>
+  <hr>
 
-    
-    <h3 id="Introduction">Introduction</h3>
-    <pre id="Introduction_InText">
+  <h2>Abstract</h2>
+  <p>
+    Helicopters are unique aircraft that rely on rotary blades to generate lift, enabling vertical take‑off, hovering, and multidirectional flight. This paper explores the fundamental aerodynamics of helicopter flight by examining the four main forces acting on the aircraft: lift, weight, thrust, and drag. Lift is explained through Bernoulli’s principle, highlighting how pressure differences across rotor blades allow helicopters to rise and hover. Weight is addressed in terms of gravity and the importance of lightweight materials such as aluminium alloys and composites to improve efficiency. Thrust is discussed as the angled component of lift that enables forward, backward, and lateral movement, while drag is analysed in its parasitic and induced forms, with engineering solutions to reduce resistance. Real‑world applications, including emergency medical evacuations and search‑and‑rescue missions, demonstrate the versatility and importance of helicopters in critical situations. The discussion concludes that balancing these aerodynamic forces through design and material innovation ensures helicopters remain efficient, stable, and indispensable in modern aviation.
+  </p>
+
+  <h3 id="Introduction">Introduction</h3>
+  <pre id="Introduction_InText">
 Unlike fixed wing airplanes, helicopters use rotary blades to generate lift, allowing them to manoeuvre in ways that regular airplanes can’t. The blades act almost like a bird’s wings; they produce lift by constantly moving through the air. This way of creating a lift force enables them to hover, take off, and land vertically without the need for a runway. By changing the pitch of the rotary blades, in addition to vertical flight, helicopters can move sideways, forward, or backwards by tilting the rotor disc in the desired direction.
 
 This ability to move in multiple directions and hover makes helicopters highly dependable in emergency situations. For example, helicopters can land directly at accident sites or hover overhead, and they are able to transport patients from remote areas to hospitals much faster than ground vehicles. Beyond medical use, helicopters are also vital in search and rescue missions. Their ability to hover and land in difficult terrain makes them essential for reaching people in places that ground vehicles cannot access. For example, during the 2015 Nepal earthquake, helicopters transported survivors and delivered aid to remote villages cut off by landslides.
-    </pre>
+  </pre>
 
-    
-    <h3 id="Analysis and discussion">Analysis and Discussion</h3>
-    <pre id="Analysis_InText">
+  <h3 id="Analysis and discussion">Analysis and Discussion</h3>
+  <pre id="Analysis_InText">
 Helicopter flight relies on four main forces: lift, weight, thrust, and drag. Helicopters generate these forces through rotating blades that constantly change their angle. This allows precise movements. However, this introduces obstacles that need to be overcome to ensure reliable performance and safe operation.
 
 Lift is the upward force that allows a helicopter to rise in the air. This is produced by the rotary blades moving through the air, creating a pressure difference over and under the helicopter. By adjusting the pitch of the blades, pilots can increase and decrease the lift force, which allows them to move upwards, downwards, or hover. The way lift is generated can be explained using Bernoulli’s principle: air moves faster over the top surface of the blade, creating lower pressure, while slower air underneath creates higher pressure. This difference in pressure produces the upward force that keeps the helicopter in the air.
@@ -58,66 +53,39 @@ Associated Press (2015). Nepal earthquake: helicopters deliver aid to remote vil
 Pilot Institute (2025). What Is Bernoulli’s Principle? A Simple Guide for Pilots. Pilot Institute, 13 March. Available at: https://pilotinstitute.com/bernoullis-principle/ (Accessed: 4 December 2025).
 
 Journal of the American Helicopter Society (2025). Technical papers on vertical flight and rotorcraft aerodynamics. American Helicopter Society. Available at: https://www.ivysci.com/en/journals/0002-8711 (Accessed: 4 December 2025).
-    </pre>
+  </pre>
 
-    <p id="totalWordCount"></p>
-    <hr>
+  <p id="totalWordCount"></p>
+  <hr>
 
-    <div id="last-updated">Loading last update time...</div>
-    <button onclick="verifyLastUpdatedTime()">Verify Last Modified Time</button>
-  </div>
+  <div id="last-updated">Loading last update time...</div>
+  <button onclick="verifyLastUpdatedTime()">Verify Last Modified Time</button>
+</div>
 
-  <script>
-    const username = "FEPSFY6929499";
-    const repo = "FY6929499";
+<script>
+const username = "FEPSFY6929499";
+const repo = "FY6929499";
 
-    async function getLastUpdatedTime() {
-      const url = `https://api.github.com/repos/${username}/${repo}/commits`;
-      try {
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: { 'Accept': 'application/vnd.github.v3+json' }
-        });
-        if (!response.ok) throw new Error();
-
-        const commits = await response.json();
-        if (commits && commits.length > 0) {
-          const lastCommitDate = new Date(commits[0].commit.committer.date);
-          document.getElementById('last-updated').innerText =
-            `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
-        } else {
-          document.getElementById('last-updated').innerText = 'No commits found.';
-        }
-      } catch (error) {
-        document.getElementById('last-updated').innerText =
-          'Error fetching update time. Please check repository details.';
-      }
+async function getLastUpdatedTime() {
+  const url = `https://api.github.com/repos/${username}/${repo}/commits`;
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: { 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!response.ok) throw new Error();
+    const commits = await response.json();
+    if (commits && commits.length > 0) {
+      const lastCommitDate = new Date(commits[0].commit.committer.date);
+      document.getElementById('last-updated').innerText =
+        `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
+    } else {
+      document.getElementById('last-updated').innerText = 'No commits found.';
     }
+  } catch (error) {
+    document.getElementById('last-updated').innerText =
+      'Error fetching update time. Please check repository details.';
+  }
+}
 
-    async function verifyLastUpdatedTime() {
-      document.getElementById('last-updated').innerText = 'Verifying...';
-      await getLastUpdatedTime();
-      alert("Last modified time has been successfully verified from GitHub API.");
-    }
-
-    function displayWordCount(sectionId) {
-      const text = document.getElementById(sectionId).textContent;
-      const wordArray = text.trim().split(/\s+/);
-      return wordArray.length;
-    }
-
-    function displayTotalWordCount() {
-      const IntroductionCount = displayWordCount("Introduction_InText");
-      const AnalysisCount = displayWordCount("Analysis_InText");
-      const totalWordCount = IntroductionCount + AnalysisCount;
-      document.getElementById("totalWordCount").innerText =
-        `Total word count: ${totalWordCount}`;
-    }
-
-    window.onload = function() {
-      getLastUpdatedTime();
-      displayTotalWordCount();
-    };
-  </script>
-</body>
-</html>
+async function verifyLastUpdatedTime()
