@@ -88,4 +88,10 @@
 
     function displayWordCount(sectionId) {
       const text = document.getElementById(sectionId).textContent;
-      const wordArray = text.trim().
+      const wordArray = text.trim().split(/\s+/);
+      return wordArray.length;
+    }
+
+    function displayTotalWordCount() {
+      const IntroductionCount = displayWordCount("Introduction_InText");
+      const Analysis
