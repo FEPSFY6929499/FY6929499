@@ -14,7 +14,7 @@
 
   <!-- Introduction -->
   <h3 id="Introduction">Introduction</h3>
-  <p>
+  <p id="Introduction_InText">
     Unlike fixed wing airplanes, helicopters use rotary blades to generate lift, allowing them to manoeuvre in ways that regular airplanes can’t. The blades act almost like a bird’s wings; they produce lift by constantly moving through the air. This way of creating a lift force enables them to hover, take off, and land vertically without the need for a runway. By changing the pitch of the rotary blades, in addition to vertical flight, helicopters can move sideways, forward, or backwards by tilting the rotor disc in the desired direction.
   </p>
   <p>
@@ -23,7 +23,7 @@
 
   <!-- Analysis -->
   <h3 id="Analysis and discussion">Analysis and Discussion</h3>
-  <p>
+  <p id="Analysis_InText">
     Helicopter flight relies on four main forces: lift, weight, thrust, and drag. Helicopters generate these forces through rotating blades that constantly change their angle. This allows precise movements. However, this introduces obstacles that need to be overcome to ensure reliable performance and safe operation.
   </p>
 
@@ -119,6 +119,4 @@
     }
 
     function displayWordCount(sectionId) {
-      const text = document.getElementById(sectionId).textContent;
-      const wordArray = text.trim().split(/\s+/);
-      return wordArray
+      const text = document.getElementById(sectionId).textContent
