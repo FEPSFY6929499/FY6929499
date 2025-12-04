@@ -86,60 +86,53 @@ Journal of the American Helicopter Society (2025). Technical papers on vertical 
     <hr>
 
     <div id="last-updated">Loading last update time...</div>
-    <button onclick="verifyLastUpdatedTime()">Verify Last Modified Time</button>
+    <button onclick="verifyLastUpdatedTime()" style="display:block; margin:10px auto; padding:8px 16px;">Verify Last Modified Time</button>
   </div>
 
   <script>
-    const username = "FEPSFY6929499";
-    const repo = "FY6929499";
-
     async function getLastUpdatedTime() {
-      const url = `https://api.github.com/repos/${username}/${repo}/commits`;
-      try {
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: { 'Accept': 'application/vnd.github.v3+json' }
-        });
-        if (!response.ok) throw new Error();
-
-        const commits = await response.json();
-        if (commits && commits.length > 0) {
-          const lastCommitDate = new Date(commits[0].commit.committer.date);
-          document.getElementById('last-updated').innerText = `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
-        } else {
-          document.getElementById('last-updated').innerText = 'No commits found.';
+        const username = 'nr0025';
+        const repo = 'FY0025';
+        const url = `https://api.github.com/repos/${username}/${repo}/commits`;
+        try {
+            const response = await fetch(url, { method:'GET', headers:{'Accept':'application/vnd.github.v3+json'} });
+            if (!response.ok) throw new Error();
+            const commits = await response.json();
+            if (commits && commits.length > 0) {
+                const lastCommitDate = new Date(commits[0].commit.committer.date);
+                document.getElementById('last-updated').innerText = `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
+            } else {
+                document.getElementById('last-updated').innerText = 'No commits found in the repository.';
+            }
+        } catch (error) {
+            console.error(error);
+            document.getElementById('last-updated').innerText = 'Error fetching update time. Please check the repository details.';
         }
-      } catch (error) {
-        document.getElementById('last-updated').innerText = 'Error fetching update time. Please check repository details.';
-      }
     }
 
     async function verifyLastUpdatedTime() {
-      document.getElementById('last-updated').innerText = 'Verifying...';
-      await getLastUpdatedTime();
-      alert("Last modified time has been successfully verified from GitHub API.");
+        document.getElementById('last-updated').innerText = 'Verifying...';
+        await getLastUpdatedTime();
+        alert('Last modified time has been successfully verified from GitHub API.');
     }
 
     function displayWordCount(sectionId) {
-      const text = document.getElementById(sectionId).textContent;
-      const wordArray = text.trim().split(/\s+/);
-      return wordArray.length;
+      const elem = document.getElementById(sectionId);
+      if (!elem) return 0;
+      return elem.textContent.trim().split(/\s+/).filter(word => word.length > 0).length;
     }
 
     function displayTotalWordCount() {
-      const sections = ["Introduction_InText", "Lift", "Weight", "Thrust", "Drag"];
+      const sections = ["Introduction_InText", "Analysis_InText", "Lift", "Weight", "Thrust", "Drag"];
       let total = 0;
-      sections.forEach(id => {
-        const elem = document.getElementById(id);
-        if (elem) total += elem.textContent.trim().split(/\s+/).length;
-      });
+      sections.forEach(id => total += displayWordCount(id));
       document.getElementById("totalWordCount").innerText = `Total word count: ${total}`;
     }
 
-    window.onload = function() {
+    window.addEventListener('load', () => {
       getLastUpdatedTime();
       displayTotalWordCount();
-    };
+    });
   </script>
 </body>
 </html>
