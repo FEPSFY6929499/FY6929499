@@ -2,33 +2,31 @@
 <html>
 <head>
   <title>Conference Paper: Aerodynamics of a Helicopter</title>
-  <!-- Link to W3Schools CSS -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-  <!-- Banner -->
   <img src="WebBanner2023.png" alt="banner" width="900" height="300">
-
-  <!-- Headings -->
   <h1><b>ENG0018 Computer Laboratory 2025/26</b></h1>
   <h2>Student URN: 6929499</h2>
   <hr>
   <h2 style="font-family:calibri;"><b>Conference paper: Aerodynamics of a Helicopter</b></h2>
   <hr>
 
-  <!-- Placeholder for last updated time -->
-  <div id="last-updated">Loading last update time...</div>
+  <h3 id="Introduction">Introduction</h3>
+  <pre id="Introduction_InText"> ... your text ... </pre>
 
-  <!-- Verify Button -->
-  <button onclick="verifyLastUpdatedTime()" 
-          style="display:block; margin:10px auto; padding:8px 16px;">
-    Verify Last Modified Time
-  </button>
+  <h3 id="Analysis and discussion">Analysis and discussion</h3>
+  <p id="Analysis_InText"> ... your text ... </p>
+
+  <p id="totalWordCount"></p>
+  <hr>
+
+  <div id="last-updated">Loading last update time...</div>
+  <button onclick="verifyLastUpdatedTime()">Verify Last Modified Time</button>
 
   <script>
-    // Replace with your own GitHub username and repository name
-    const username = "FEPSFY6929499";   // <-- your GitHub username
-    const repo = "FY6929499";           // <-- your repository name
+    const username = "FEPSFY6929499";
+    const repo = "FY6929499";
 
     async function getLastUpdatedTime() {
       const url = `https://api.github.com/repos/${username}/${repo}/commits`;
@@ -37,36 +35,47 @@
           method: 'GET',
           headers: { 'Accept': 'application/vnd.github.v3+json' }
         });
-
         if (!response.ok) {
           throw new Error(`Error fetching data: ${response.status} - ${response.statusText}`);
         }
-
         const commits = await response.json();
         if (commits && commits.length > 0) {
           const lastCommitDate = new Date(commits[0].commit.committer.date);
           document.getElementById('last-updated').innerText =
             `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
         } else {
-          document.getElementById('last-updated').innerText =
-            'No commits found in the repository.';
+          document.getElementById('last-updated').innerText = 'No commits found in the repository.';
         }
       } catch (error) {
-        console.error('Error fetching the last updated time:', error);
         document.getElementById('last-updated').innerText =
           'Error fetching update time. Please check the repository details.';
       }
     }
 
-    // Function to verify the last update time by re-fetching it
     async function verifyLastUpdatedTime() {
       document.getElementById('last-updated').innerText = 'Verifying...';
       await getLastUpdatedTime();
       alert("Last modified time has been successfully verified from GitHub API.");
     }
 
-    // Initial load to display the time on page load
-    window.onload = getLastUpdatedTime;
+    function displayWordCount(sectionId) {
+      const text = document.getElementById(sectionId).textContent;
+      const wordArray = text.trim().split(/\s+/);
+      return wordArray.length;
+    }
+
+    function displayTotalWordCount() {
+      const IntroductionCount = displayWordCount("Introduction_InText");
+      const AnalysisCount = displayWordCount("Analysis_InText");
+      const totalWordCount = IntroductionCount + AnalysisCount;
+      document.getElementById("totalWordCount").innerText =
+        `Total word count: ${totalWordCount}`;
+    }
+
+    window.onload = function() {
+      getLastUpdatedTime();
+      displayTotalWordCount();
+    };
   </script>
 </body>
 </html>
