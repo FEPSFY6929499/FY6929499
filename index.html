@@ -12,7 +12,7 @@
 </head>
 <body>
     
-  <div id="content-section"> dont change anything just add the subheadings lift thrust drag and weight keep the code fully and write it all out 
+  <div id="content-section">
     <img src="WebBanner2023.png" alt="banner" width="900" height="300">
 
     <h1><b>ENG0018 Computer Laboratory 2025/26</b></h1>
@@ -35,12 +35,6 @@ This ability to move in multiple directions and hover makes helicopters highly d
 
     
     <h3 id="Analysis and discussion">Analysis and Discussion</h3>
-
-    <h3>Lift</h3>
-    <h3>Weight</h3>
-    <h3>Thrust</h3>
-    <h3>Drag</h3>
-
     <pre id="Analysis_InText">
 Helicopter flight relies on four main forces: lift, weight, thrust, and drag. Helicopters generate these forces through rotating blades that constantly change their angle. This allows precise movements. However, this introduces obstacles that need to be overcome to ensure reliable performance and safe operation.
 
@@ -97,3 +91,35 @@ Journal of the American Helicopter Society (2025). Technical papers on vertical 
           document.getElementById('last-updated').innerText = 'No commits found.';
         }
       } catch (error) {
+        document.getElementById('last-updated').innerText =
+          'Error fetching update time. Please check repository details.';
+      }
+    }
+
+    async function verifyLastUpdatedTime() {
+      document.getElementById('last-updated').innerText = 'Verifying...';
+      await getLastUpdatedTime();
+      alert("Last modified time has been successfully verified from GitHub API.");
+    }
+
+    function displayWordCount(sectionId) {
+      const text = document.getElementById(sectionId).textContent;
+      const wordArray = text.trim().split(/\s+/);
+      return wordArray.length;
+    }
+
+    function displayTotalWordCount() {
+      const IntroductionCount = displayWordCount("Introduction_InText");
+      const AnalysisCount = displayWordCount("Analysis_InText");
+      const totalWordCount = IntroductionCount + AnalysisCount;
+      document.getElementById("totalWordCount").innerText =
+        `Total word count: ${totalWordCount}`;
+    }
+
+    window.onload = function() {
+      getLastUpdatedTime();
+      displayTotalWordCount();
+    };
+  </script>
+</body>
+</html>
