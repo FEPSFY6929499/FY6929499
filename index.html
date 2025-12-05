@@ -134,14 +134,20 @@ async function verifyLastUpdatedTime() {
   alert("Last modified time has been successfully verified from GitHub API.");
 }
 
-// Word counter
+// Accurate Word Counter
 function displayTotalWordCount() {
   const sections = ["Introduction_InText", "LiftText", "WeightText", "ThrustText", "DragText"];
   let total = 0;
+
   sections.forEach(id => {
-    const text = document.getElementById(id).textContent;
-    total += text.trim().split(/\s+/).length;
+    const rawText = document.getElementById(id).textContent;
+    // Remove extra spaces, line breaks, tabs, etc.
+    const cleanText = rawText.replace(/\s+/g, ' ').trim();
+    if (cleanText.length > 0) {
+      total += cleanText.split(' ').length;
+    }
   });
+
   document.getElementById("totalWordCount").innerText = `Total word count: ${total}`;
 }
 
